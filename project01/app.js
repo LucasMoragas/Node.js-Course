@@ -1,23 +1,11 @@
-var express = require('express')
-var msg = require('./test_modules')
+var app = require('./config/server.js')
 
-var app = express()
+var newsRoute = require('./app/routes/news.js')(app)
 
-app.set('view engine', 'ejs')
+var homeRoute = require('./app/routes/home.js')(app)
 
-app.get('/', function(req, res){
-    res.render('./home/index.ejs')
-})
-
-app.get('/news', function(req, res){
-    res.render('./noticias/noticias.ejs')
-})
-
-app.get('/form_add_news', function(req, res){
-    res.render('./admin/form_add_news.ejs')
-})
-
+var formAddRoute = require('./app/routes/form_add_news.js')(app)
 
 app.listen(3000, function(){
-    console.log(msg())
+    console.log('Server ON')
 })

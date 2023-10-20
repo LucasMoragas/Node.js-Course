@@ -1,14 +1,16 @@
-var dbConnection = require('../../config/dbConnection.js')
-
 module.exports = function(app){
+    
+    
 
-    var connection = dbConnection()
+    app.get('/news', function(req, res){
 
-    app.get('/news-board', function(req, res){
+        var connection = app.config.dbConnection()
+        var newsModel = app.app.models.newsModel
 
-        connection.query('select * from news',function(error, result){
-            res.render('./news/newsBoard.ejs', {news: result})
+        newsModel.getContent(connection ,function(error, result){
+            res.render('./news/news.ejs', {news: result})
         })
     })
+    
 }
 

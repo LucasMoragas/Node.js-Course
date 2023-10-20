@@ -8,5 +8,22 @@
 
 		<h1>News</h1>
 
+		<table border="1" style="border-collapse: collapse;">
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>News</th>
+			</tr>
+
+			<% for(var i = 0; i < news.length; i++){ %>
+
+				<tr>
+					<td><%= news[i].news_id %></td>
+					<td><%= news[i].title %></td>
+					<td><%= news[i].news %></td>
+				</tr>
+			<% } %>
+		</table>
+
 	</body>
 </html>

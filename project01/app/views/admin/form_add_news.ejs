@@ -9,12 +9,31 @@
 		<h1>Add news</h1>
 		<br>
 
+		<% if(validation){ %>
+			<ul>
+				<% for(var i = 0; i < validation.length; i++){ %>
+					<li>
+						<%= validation[i].msg %>
+					</li>
+				<% } %>
+			</ul>
+		<% } %>
+
 		<form action="/news/save" method="post">
 			<label for="">Title:</label>
-			<input type="text" name="title" id="title" placeholder="News title">
+			<input type="text" name="title" id="title" placeholder="News title" value="<%= news.title %>">
+			<br>
+			<label for="">Abstract:</label>
+			<input type="text" name="abstract" id="abstract" placeholder="News abstract" value="<%= news.abstract %>">
+			<br>
+			<label for="">Author:</label>
+			<input type="text" name="author" id="author" placeholder="News author" value="<%= news.author %>">
+			<br>
+			<label for="">Facts date:</label>
+			<input type="date" name="news_date" id="news_date" placeholder="News date" value="<%= news.news_date %>">
 			<br>
 			<label for="">Content:</label>
-			<textarea name="content" id="content" cols="30" rows="5"></textarea>
+			<textarea name="content" id="content" cols="30" rows="5"><%= news.content %></textarea>
 			<br>
 			<input type="submit" value="Send">
 		</form>

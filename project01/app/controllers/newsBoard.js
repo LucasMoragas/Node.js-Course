@@ -11,7 +11,9 @@ module.exports.news = function (app, req, res) {
     var connection = app.config.dbConnection()
     var newsModel = new app.app.models.NewsDAO(connection)
 
-    newsModel.getContent(function (error, result) {
+    var news_id = req.query
+
+    newsModel.getContent(news_id, function (error, result) {
         res.render('./news/news.ejs', { news: result })
     })
 }

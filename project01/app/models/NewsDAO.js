@@ -7,7 +7,7 @@ NewsDAO.prototype.getNews = function(callback){
 }
 
 NewsDAO.prototype.getContent = function(callback){
-    this._connection.query('select * from news where news_id = 2', callback)
+    this._connection.query('select * from news where news_id = 7', callback)
 }
 
 NewsDAO.prototype.saveNews = function(news, callback){

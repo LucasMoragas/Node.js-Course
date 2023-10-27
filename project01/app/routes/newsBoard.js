@@ -2,12 +2,12 @@ module.exports = function(app){
     
     app.get('/news-board', function(req, res){
 
-        var connection = app.config.dbConnection()
-        var newsModel = new app.app.models.NewsDAO(connection)
+        app.app.controllers.newsBoard.news_board(app, req, res)
+    })
 
-        newsModel.getNews(function(error, result){
-            res.render('./news/newsBoard.ejs', {news: result})
-        })
+    app.get('/news', function(req, res){
+
+        app.app.controllers.newsBoard.news(app, req, res)
     })
     
 }
